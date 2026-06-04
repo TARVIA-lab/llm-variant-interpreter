@@ -87,11 +87,16 @@ generate_report.py    → self-contained HTML clinical report
 
 ## Quick Start
 
-### Prerequisites
+### Setup (2 minutes)
+
+**See [INSTALL.md](INSTALL.md) for complete setup instructions.**
 
 ```bash
-pip install anthropic requests jinja2
+git clone https://github.com/TARVIA-lab/llm-variant-interpreter.git
+cd llm-variant-interpreter
+pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...
+python verify_setup.py
 ```
 
 ### Run from VCF (full pipeline)
