@@ -1,0 +1,5 @@
+{
+  "name": "llm-variant-interpreter",
+  "description": "AI-powered clinical interpretation of genomic variants using Claude Opus 4.8 with prompt caching and structured tool-use output",
+  "author": {"name": "TARVIA-lab", "email": "o.lujano13@gmail.com"}
+}

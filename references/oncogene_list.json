@@ -1,0 +1,34 @@
+{
+  "oncogenes": [
+    "KRAS",
+    "BRAF",
+    "EGFR",
+    "PIK3CA",
+    "ALK",
+    "RET",
+    "MET",
+    "KIT",
+    "FLT3",
+    "IDH1",
+    "IDH2"
+  ],
+  "tumor_suppressors": [
+    "TP53",
+    "BRCA1",
+    "BRCA2",
+    "PTEN",
+    "RB1",
+    "APC",
+    "VHL",
+    "STK11",
+    "SMAD4",
+    "ARID1A"
+  ],
+  "tier1_targets": {
+    "EGFR L858R": "osimertinib",
+    "BRAF V600E": "dabrafenib+trametinib",
+    "KRAS G12C": "sotorasib",
+    "BRCA1/2": "olaparib",
+    "PIK3CA (BC)": "alpelisib"
+  }
+}

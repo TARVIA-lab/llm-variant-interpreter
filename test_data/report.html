@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variant Interpretation Report — TARVIA_DEMO_001</title>
+<style>
+  :root {
+    --cream: #F4F1EA; --ink: #1a1a2e; --accent: #c0392b;
+    --green: #27ae60; --yellow: #f39c12; --gray: #6c757d;
+    --card-bg: #fff; --border: #e0ddd8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, "Palatino Linotype", serif; background: var(--cream);
+          color: var(--ink); line-height: 1.6; font-size: 15px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+  header h1 { font-size: 1.8rem; color: var(--ink); margin-bottom: 0.3rem; }
+  header .meta { color: var(--gray); font-size: 0.9rem; }
+  header .meta span { margin-right: 2rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                   gap: 1rem; margin-bottom: 2rem; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--border);
+                   border-radius: 8px; padding: 1.2rem; text-align: center; }
+  .summary-card .num { font-size: 2.2rem; font-weight: bold; color: var(--accent); }
+  .summary-card .label { font-size: 0.8rem; color: var(--gray); text-transform: uppercase;
+                           letter-spacing: 0.05em; margin-top: 0.2rem; }
+  section { margin-bottom: 2.5rem; }
+  section h2 { font-size: 1.2rem; border-bottom: 1px solid var(--border);
+                padding-bottom: 0.5rem; margin-bottom: 1rem; color: var(--ink); }
+  .variant-card { background: var(--card-bg); border: 1px solid var(--border);
+                   border-left: 4px solid var(--border); border-radius: 6px;
+                   padding: 1.2rem; margin-bottom: 1rem; }
+  .variant-card.high   { border-left-color: var(--accent); }
+  .variant-card.moderate { border-left-color: var(--yellow); }
+  .variant-card.low    { border-left-color: var(--green); }
+  .variant-header { display: flex; justify-content: space-between; align-items: flex-start;
+                     flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .variant-header h3 { font-size: 1.1rem; }
+  .badges { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px;
+             font-size: 0.75rem; font-weight: bold; }
+  .badge-path   { background: #fde8e8; color: #c0392b; }
+  .badge-lp     { background: #fef3e2; color: #e67e22; }
+  .badge-vus    { background: #fef9e7; color: #d4ac0d; }
+  .badge-benign { background: #e8f5e9; color: #27ae60; }
+  .badge-unk    { background: #f0f0f0;  color: #6c757d; }
+  .badge-high   { background: #fde8e8; color: #c0392b; }
+  .badge-moderate { background: #fef3e2; color: #e67e22; }
+  .badge-low    { background: #e8f5e9; color: #27ae60; }
+  .badge-t1     { background: #d5e8d4; color: #27ae60; }
+  .badge-t2     { background: #dae8fc; color: #2980b9; }
+  .badge-t3     { background: #fff2cc; color: #d4ac0d; }
+  .badge-t4     { background: #f0f0f0;  color: #6c757d; }
+  .variant-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                   gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.8rem; }
+  .variant-meta dt { color: var(--gray); }
+  .variant-meta dd { font-weight: 500; }
+  .interpretation { background: var(--cream); border-radius: 4px; padding: 0.8rem;
+                     font-style: italic; margin-bottom: 0.6rem; font-size: 0.9rem; }
+  .therapies { margin-top: 0.6rem; }
+  .therapies h4 { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.3rem; }
+  .therapies ul { list-style: none; }
+  .therapies ul li { display: inline-block; background: #d5e8d4; color: #1a6e34;
+                       padding: 0.15rem 0.5rem; border-radius: 10px; font-size: 0.8rem;
+                       margin: 0.1rem; }
+  .caveats { font-size: 0.82rem; color: var(--gray); margin-top: 0.5rem;
+               border-top: 1px dashed var(--border); padding-top: 0.4rem; }
+  .clinvar-badge { font-size: 0.78rem; color: var(--gray); }
+  .germline-flag { display: inline-block; background: #fff2cc; color: #d68910;
+                    padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.78rem;
+                    margin-left: 0.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: var(--ink); color: white; padding: 0.6rem 0.8rem; text-align: left; }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) { background: #faf9f6; }
+  footer { border-top: 1px solid var(--border); padding-top: 1rem; font-size: 0.8rem;
+             color: var(--gray); margin-top: 3rem; }
+  .no-variants { color: var(--gray); font-style: italic; padding: 1rem 0; }
+  @media print {
+    body { background: white; font-size: 11pt; }
+    .variant-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Variant Interpretation Report</h1>
+  <div class="meta">
+    <span><strong>Sample:</strong> TARVIA_DEMO_001</span>
+    <span><strong>Tumor type:</strong> Non-small cell lung adenocarcinoma (NSCLC)</span>
+    <span><strong>Date:</strong> 2026-06-04 10:58</span>
+    <span><strong>Pipeline:</strong> TARVIA-lab llm-variant-interpreter</span>
+    <span><strong>Model:</strong> claude-opus-4-8</span>
+  </div>
+</header>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="num">8</div>
+    <div class="label">Variants Analyzed</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">8</div>
+    <div class="label">Pathogenic / LP</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">7</div>
+    <div class="label">High Relevance</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">5</div>
+    <div class="label">Tier 1 Actionable</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">3</div>
+    <div class="label">Germline Flag</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">0</div>
+    <div class="label">VUS</div>
+  </div>
+</div>
+
+<section><h2>Actionable & High-Relevance Variants (8)</h2>
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>KRAS p.Gly12Asp</h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t2">Tier 2</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs121913529</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.35G>A</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.42</dd></div>
+    <div><dt>Cancer types</dt><dd>Pancreatic adenocarcinoma, Colorectal cancer, NSCLC</dd></div>
+    <div><dt>Mechanism</dt><dd>Activating RAS pathway mutation impairing GTPase activity, locking KRAS in GTP-bound active state</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Multiple cancers ★★</div>
+  <div class="interpretation">KRAS p.Gly12Asp (G12D) is a well-established oncogenic driver mutation constitutively activating the RAS/MAPK pathway. Unlike G12C, no FDA-approved direct inhibitor exists for G12D; however, downstream MEK inhibitors and combination strategies are in clinical trials. This variant has strong prognostic implications across multiple tumor types.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Sotorasib (KRAS G12C only — not applicable here)</li><li>MEK inhibitors (investigational)</li><li>SOS1 inhibitors (clinical trials)</li></ul></div>
+  <div class="caveats">⚠ Sotorasib and adagrasib target KRAS G12C specifically — they are NOT active against G12D. Consider enrollment in KRAS G12D-specific trials (e.g., MRTX1133, glecirasib).</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>BRAF p.Val600Glu</h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t1">Tier 1</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs113488022</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.1799T>A</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.38</dd></div>
+    <div><dt>Cancer types</dt><dd>Melanoma, Colorectal cancer, NSCLC, Thyroid cancer</dd></div>
+    <div><dt>Mechanism</dt><dd>Constitutive BRAF kinase activation, driving sustained MEK/ERK signaling independent of upstream RAS</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Melanoma/colorectal ★★</div>
+  <div class="interpretation">BRAF p.Val600Glu (V600E) is the most common activating BRAF mutation and a major therapeutic target across multiple tumor types. FDA-approved BRAF+MEK inhibitor combinations are available for melanoma, CRC, NSCLC, and thyroid cancer. Tumor type must guide specific regimen selection.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Vemurafenib + cobimetinib</li><li>Dabrafenib + trametinib</li><li>Encorafenib + binimetinib (melanoma)</li><li>Encorafenib + cetuximab (CRC)</li><li>Dabrafenib + trametinib (NSCLC/thyroid)</li></ul></div>
+  <div class="caveats">⚠ Tumor type dictates regimen. CRC requires triple combination with EGFR antibody to overcome feedback activation. Prior BRAF-inhibitor exposure may select for resistance mechanisms (MEK1/2, RAS mutations, BRAF amplification).</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>EGFR p.Leu858Arg</h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t1">Tier 1</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs121434568</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.2573T>G</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.45</dd></div>
+    <div><dt>Cancer types</dt><dd>Non-small cell lung cancer (adenocarcinoma), NSCLC</dd></div>
+    <div><dt>Mechanism</dt><dd>Activating EGFR kinase domain mutation increasing autophosphorylation and downstream PI3K/AKT and MAPK signaling</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Lung adenocarcinoma ★★★</div>
+  <div class="interpretation">EGFR p.Leu858Arg (L858R) is one of the two most common sensitizing EGFR mutations in NSCLC, conferring strong sensitivity to EGFR tyrosine kinase inhibitors. Osimertinib is the preferred first-line agent given superior CNS penetration and efficacy data (FLAURA trial). Monitor for acquired T790M resistance.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Osimertinib (1st-line, 3rd-generation)</li><li>Erlotinib</li><li>Gefitinib</li><li>Afatinib</li><li>Amivantamab (after osimertinib resistance)</li></ul></div>
+  <div class="caveats">⚠ EGFR mutation testing should be repeated at progression to detect acquired T790M or other resistance mechanisms. If T790M positive at progression on 1st/2nd-gen TKI, osimertinib is indicated.</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>TP53 p.Arg175His<span class="germline-flag">⚠ Germline implications</span></h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t4">Tier 4</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs28934578</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.524G>A</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.35</dd></div>
+    <div><dt>Cancer types</dt><dd>Pan-cancer, Li-Fraumeni syndrome (germline), Multiple solid tumors</dd></div>
+    <div><dt>Mechanism</dt><dd>Loss-of-function hotspot mutation abolishing DNA-binding capacity and p53 tumor suppression; gain-of-function oncogenic effects also reported</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Li-Fraumeni syndrome ★★★</div>
+  <div class="interpretation">TP53 p.Arg175His (R175H) is the most common TP53 hotspot mutation, causing both loss of wild-type tumor suppressive function and gain-of-function oncogenic activity. No approved targeted therapy directly addresses this mutation, though eprenetapopt clinical trials are ongoing. Germline TP53 mutations cause Li-Fraumeni syndrome — germline testing should be considered.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>APR-246/eprenetapopt (TP53 R175H/Y220C reactivator, clinical trials)</li><li>Immunotherapy (some TP53-mutant tumors have high TMB)</li><li>PRIMA-1 analogs (investigational)</li></ul></div>
+  <div class="caveats">⚠ CRITICAL: Given the allele frequency (0.35), consider whether this could represent a germline TP53 mutation (Li-Fraumeni syndrome). Germline testing with genetic counseling is strongly recommended. Germline TP53 requires cascade testing of family members and enhanced cancer surveillance.</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>PIK3CA p.Glu545Lys</h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t1">Tier 1</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs104886003</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.1633G>A</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.28</dd></div>
+    <div><dt>Cancer types</dt><dd>Breast cancer (HR+/HER2-), Endometrial cancer, Colorectal cancer, Head and neck</dd></div>
+    <div><dt>Mechanism</dt><dd>Activating helical domain mutation enhancing PI3K activity and downstream AKT/mTOR signaling</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Multiple cancers ★★</div>
+  <div class="interpretation">PIK3CA p.Glu545Lys (E545K) is one of the three most common PIK3CA hotspot mutations, activating the PI3K/AKT pathway. In HR+/HER2- breast cancer, alpelisib + fulvestrant is FDA-approved based on the SOLAR-1 trial. Hyperglycemia and rash are significant toxicities requiring monitoring.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Alpelisib + fulvestrant (HR+/HER2- BC, FDA-approved)</li><li>Capivasertib + fulvestrant (AKT inhibitor)</li><li>Everolimus (mTOR inhibitor, indirect)</li><li>Inavolisib (clinical trials)</li></ul></div>
+  <div class="caveats">⚠ Alpelisib is only approved in combination with fulvestrant for HR+/HER2- breast cancer post-CDK4/6 inhibitor. Tumor type should guide treatment. Check for PTEN loss co-occurrence which may reduce PI3Ki sensitivity.</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>IDH1 p.Arg132His</h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t1">Tier 1</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs267607140</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.394C>T</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.22</dd></div>
+    <div><dt>Cancer types</dt><dd>Glioma (grade 2-3), Glioblastoma (rare), AML, Cholangiocarcinoma</dd></div>
+    <div><dt>Mechanism</dt><dd>Neomorphic enzyme activity producing 2-hydroxyglutarate (2-HG), which inhibits alpha-KG-dependent dioxygenases causing epigenetic dysregulation and impaired differentiation</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Pathogenic — Glioma/AML ★★</div>
+  <div class="interpretation">IDH1 p.Arg132His (R132H) produces the oncometabolite 2-hydroxyglutarate, driving hypermethylation and epigenetic reprogramming. FDA-approved IDH1 inhibitors include ivosidenib (AML, cholangiocarcinoma) and vorasidenib (low-grade glioma — approved 2024 based on INDIGO trial). Tumor type must guide drug selection.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Ivosidenib (IDH1 inhibitor, FDA-approved AML/CCA)</li><li>Vorasidenib (IDH1+IDH2, FDA-approved low-grade glioma — INDIGO trial 2024)</li><li>Olutasidenib (IDH1 inhibitor, AML)</li></ul></div>
+  <div class="caveats">⚠ Vorasidenib was specifically approved for IDH1/2-mutant Grade 2 glioma — verify tumor grade and histology. In AML, ivosidenib may be used alone or combined with azacitidine. Serum/CSF 2-HG levels can serve as a pharmacodynamic biomarker.</div>
+</div>
+
+<div class="variant-card high">
+  <div class="variant-header">
+    <h3>BRCA2 p.Ser2059fs<span class="germline-flag">⚠ Germline implications</span></h3>
+    <div class="badges">
+      <span class="badge badge-path">Pathogenic</span>
+      <span class="badge badge-high">Relevance: High</span>
+      <span class="badge badge-t1">Tier 1</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs80357382</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.6174delT</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.48</dd></div>
+    <div><dt>Cancer types</dt><dd>Ovarian cancer (HBOC), Breast cancer (HBOC), Pancreatic cancer, Prostate cancer</dd></div>
+    <div><dt>Mechanism</dt><dd>Frameshift causing BRCA2 loss-of-function, impairing homologous recombination repair and creating synthetic lethality with PARP inhibition</dd></div>
+    <div><dt>AI Confidence</dt><dd>High</dd></div>
+  </div>
+  
+  <div class="interpretation">BRCA2 frameshift p.Ser2059fs causes premature truncation and loss of BRCA2-mediated homologous recombination repair. PARP inhibitors (olaparib, niraparib, rucaparib, talazoparib) are FDA-approved for BRCA1/2-mutant ovarian, breast, pancreatic, and prostate cancers. HRD testing may further refine platinum/PARP inhibitor sensitivity.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Olaparib (PARP inhibitor, FDA-approved multiple indications)</li><li>Niraparib</li><li>Rucaparib</li><li>Talazoparib (breast)</li><li>Platinum-based chemotherapy (high sensitivity)</li></ul></div>
+  <div class="caveats">⚠ CRITICAL: High allele frequency (0.48) strongly suggests germline BRCA2 mutation. Genetic counseling and germline confirmation are mandatory. Germline BRCA2 mutations carry lifetime breast (~45-69%), ovarian (~11-17%), and pancreatic cancer risk and have cascade testing implications for first-degree relatives.</div>
+</div>
+
+<div class="variant-card moderate">
+  <div class="variant-header">
+    <h3>PTEN p.Arg130Gln<span class="germline-flag">⚠ Germline implications</span></h3>
+    <div class="badges">
+      <span class="badge badge-lp">Likely Pathogenic</span>
+      <span class="badge badge-moderate">Relevance: Moderate</span>
+      <span class="badge badge-t3">Tier 3</span>
+    </div>
+  </div>
+  <div class="variant-meta">
+    <div><dt>Variant ID</dt><dd>rs121909218</dd></div>
+    <div><dt>HGVS (cDNA)</dt><dd>c.389T>A</dd></div>
+    <div><dt>Allele Freq</dt><dd>0.18</dd></div>
+    <div><dt>Cancer types</dt><dd>Endometrial cancer, Breast cancer, Glioblastoma, PTEN hamartoma syndrome</dd></div>
+    <div><dt>Mechanism</dt><dd>Partial loss-of-function of PTEN phosphatase reducing PIP3 dephosphorylation and increasing PI3K/AKT signaling</dd></div>
+    <div><dt>AI Confidence</dt><dd>Moderate</dd></div>
+  </div>
+  <div class="clinvar-badge">ClinVar: Likely pathogenic — PTEN hamartoma ★★</div>
+  <div class="interpretation">PTEN p.Arg130Gln is a partial loss-of-function variant in the phosphatase domain, likely impairing PTEN's tumor suppressive function and upregulating PI3K/AKT signaling. While not directly targeted by approved agents, downstream mTOR inhibitors may be considered. Co-occurring PIK3CA mutations should be assessed.</div>
+  <div class="therapies">
+          <h4>Targeted therapies:</h4><ul><li>Alpelisib (if PIK3CA co-mutation present)</li><li>Everolimus/temsirolimus (mTOR inhibitors)</li><li>Capivasertib (AKT inhibitor, clinical trials)</li><li>PI3K-pathway inhibitor combinations</li></ul></div>
+  <div class="caveats">⚠ Germline PTEN mutations cause PTEN Hamartoma Tumor Syndrome (PHTS/Cowden syndrome) — consider germline testing. Allele frequency (0.18) may represent somatic or germline variant. PTEN loss can predict reduced sensitivity to PI3K inhibitors in some contexts.</div>
+</div></section>
+
+
+
+<section>
+<h2>All Variants — Summary Table</h2>
+<table>
+<thead><tr>
+  <th>Gene</th><th>Variant</th><th>Significance</th>
+  <th>Relevance</th><th>Evidence</th><th>Therapies</th><th>Germline</th>
+</tr></thead>
+<tbody><tr><td>KRAS</td><td>p.Gly12Asp</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 2</td><td>Sotorasib (KRAS G12C only — not applicable here); MEK inhibitors (investigational)</td><td>No</td></tr><tr><td>BRAF</td><td>p.Val600Glu</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 1</td><td>Vemurafenib + cobimetinib; Dabrafenib + trametinib</td><td>No</td></tr><tr><td>EGFR</td><td>p.Leu858Arg</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 1</td><td>Osimertinib (1st-line, 3rd-generation); Erlotinib</td><td>No</td></tr><tr><td>TP53</td><td>p.Arg175His</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 4</td><td>APR-246/eprenetapopt (TP53 R175H/Y220C reactivator, clinical trials); Immunotherapy (some TP53-mutant tumors have high TMB)</td><td>⚠ Yes</td></tr><tr><td>PIK3CA</td><td>p.Glu545Lys</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 1</td><td>Alpelisib + fulvestrant (HR+/HER2- BC, FDA-approved); Capivasertib + fulvestrant (AKT inhibitor)</td><td>No</td></tr><tr><td>IDH1</td><td>p.Arg132His</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 1</td><td>Ivosidenib (IDH1 inhibitor, FDA-approved AML/CCA); Vorasidenib (IDH1+IDH2, FDA-approved low-grade glioma — INDIGO trial 2024)</td><td>No</td></tr><tr><td>BRCA2</td><td>p.Ser2059fs</td><td><span class="badge badge-path">Pathogenic</span></td><td>High</td><td>Tier 1</td><td>Olaparib (PARP inhibitor, FDA-approved multiple indications); Niraparib</td><td>⚠ Yes</td></tr><tr><td>PTEN</td><td>p.Arg130Gln</td><td><span class="badge badge-lp">Likely Pathogenic</span></td><td>Moderate</td><td>Tier 3</td><td>Alpelisib (if PIK3CA co-mutation present); Everolimus/temsirolimus (mTOR inhibitors)</td><td>⚠ Yes</td></tr></tbody>
+</table>
+</section>
+
+<section>
+<h2>Disclaimer</h2>
+<p style="font-size:0.85rem;color:var(--gray);">
+This report was generated using AI-assisted variant interpretation (Claude claude-opus-4-8, TARVIA-lab llm-variant-interpreter).
+Interpretations are intended to support — not replace — clinical judgment. All variants flagged as Pathogenic, Likely Pathogenic,
+or of potential germline significance should be confirmed by a board-certified molecular pathologist or clinical geneticist.
+Clinical decisions should be made in the context of the full patient history and multidisciplinary tumor board review.
+</p>
+</section>
+
+<footer>
+  Generated 2026-06-04 10:58 · TARVIA-lab · <a href="https://github.com/TARVIA-lab">github.com/TARVIA-lab</a>
+</footer>
+</div>
+</body>
+</html>

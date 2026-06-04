@@ -1,0 +1,594 @@
+[
+  {
+    "id": "rs121913529",
+    "chrom": "chr12",
+    "pos": 25245350,
+    "ref": "C",
+    "alt": "T",
+    "qual": "250",
+    "filter": "PASS",
+    "gene": "KRAS",
+    "gene_id": "KRAS",
+    "consequence": "missense_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.35G>A",
+    "hgvs_p": "p.Gly12Asp",
+    "transcript": "NM_004985.5",
+    "allele_freq": 0.42,
+    "depth": 120,
+    "all_annotations": [
+      {
+        "allele": "T",
+        "annotation": "missense_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "KRAS",
+        "gene_id": "KRAS",
+        "feature_type": "transcript",
+        "feature_id": "NM_004985.5",
+        "transcript_biotype": "protein_coding",
+        "rank": "2/6",
+        "hgvs_c": "c.35G>A",
+        "hgvs_p": "p.Gly12Asp",
+        "cdna_pos": "203/5825",
+        "cds_pos": "35/570",
+        "protein_pos": "12/189",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Multiple cancers",
+      "review_stars": 2
+    },
+    "interpretation": {
+      "variant_id": "chr12:25245350:C>T",
+      "gene": "KRAS",
+      "hgvs_p": "p.Gly12Asp",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 2 (Off-label/strong evidence)",
+      "cancer_types": [
+        "Pancreatic adenocarcinoma",
+        "Colorectal cancer",
+        "NSCLC"
+      ],
+      "mechanism": "Activating RAS pathway mutation impairing GTPase activity, locking KRAS in GTP-bound active state",
+      "targeted_therapies": [
+        "Sotorasib (KRAS G12C only \u2014 not applicable here)",
+        "MEK inhibitors (investigational)",
+        "SOS1 inhibitors (clinical trials)"
+      ],
+      "clinical_trials_keywords": [
+        "KRAS G12D",
+        "RAS inhibitor",
+        "pancreatic KRAS"
+      ],
+      "germline_implications": false,
+      "interpretation_summary": "KRAS p.Gly12Asp (G12D) is a well-established oncogenic driver mutation constitutively activating the RAS/MAPK pathway. Unlike G12C, no FDA-approved direct inhibitor exists for G12D; however, downstream MEK inhibitors and combination strategies are in clinical trials. This variant has strong prognostic implications across multiple tumor types.",
+      "confidence": "High",
+      "caveats": "Sotorasib and adagrasib target KRAS G12C specifically \u2014 they are NOT active against G12D. Consider enrollment in KRAS G12D-specific trials (e.g., MRTX1133, glecirasib)."
+    }
+  },
+  {
+    "id": "rs113488022",
+    "chrom": "chr7",
+    "pos": 140453136,
+    "ref": "A",
+    "alt": "T",
+    "qual": "280",
+    "filter": "PASS",
+    "gene": "BRAF",
+    "gene_id": "BRAF",
+    "consequence": "missense_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.1799T>A",
+    "hgvs_p": "p.Val600Glu",
+    "transcript": "NM_004333.6",
+    "allele_freq": 0.38,
+    "depth": 95,
+    "all_annotations": [
+      {
+        "allele": "T",
+        "annotation": "missense_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "BRAF",
+        "gene_id": "BRAF",
+        "feature_type": "transcript",
+        "feature_id": "NM_004333.6",
+        "transcript_biotype": "protein_coding",
+        "rank": "15/18",
+        "hgvs_c": "c.1799T>A",
+        "hgvs_p": "p.Val600Glu",
+        "cdna_pos": "1801/2948",
+        "cds_pos": "1799/2301",
+        "protein_pos": "600/766",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Melanoma/colorectal",
+      "review_stars": 2
+    },
+    "interpretation": {
+      "variant_id": "chr7:140453136:A>T",
+      "gene": "BRAF",
+      "hgvs_p": "p.Val600Glu",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 1 (FDA-approved)",
+      "cancer_types": [
+        "Melanoma",
+        "Colorectal cancer",
+        "NSCLC",
+        "Thyroid cancer",
+        "Glioma"
+      ],
+      "mechanism": "Constitutive BRAF kinase activation, driving sustained MEK/ERK signaling independent of upstream RAS",
+      "targeted_therapies": [
+        "Vemurafenib + cobimetinib",
+        "Dabrafenib + trametinib",
+        "Encorafenib + binimetinib (melanoma)",
+        "Encorafenib + cetuximab (CRC)",
+        "Dabrafenib + trametinib (NSCLC/thyroid)"
+      ],
+      "clinical_trials_keywords": [
+        "BRAF V600E",
+        "BRAF inhibitor",
+        "MEK inhibitor combination"
+      ],
+      "germline_implications": false,
+      "interpretation_summary": "BRAF p.Val600Glu (V600E) is the most common activating BRAF mutation and a major therapeutic target across multiple tumor types. FDA-approved BRAF+MEK inhibitor combinations are available for melanoma, CRC, NSCLC, and thyroid cancer. Tumor type must guide specific regimen selection.",
+      "confidence": "High",
+      "caveats": "Tumor type dictates regimen. CRC requires triple combination with EGFR antibody to overcome feedback activation. Prior BRAF-inhibitor exposure may select for resistance mechanisms (MEK1/2, RAS mutations, BRAF amplification)."
+    }
+  },
+  {
+    "id": "rs121434568",
+    "chrom": "chr7",
+    "pos": 55259515,
+    "ref": "T",
+    "alt": "G",
+    "qual": "310",
+    "filter": "PASS",
+    "gene": "EGFR",
+    "gene_id": "EGFR",
+    "consequence": "missense_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.2573T>G",
+    "hgvs_p": "p.Leu858Arg",
+    "transcript": "NM_005228.5",
+    "allele_freq": 0.45,
+    "depth": 145,
+    "all_annotations": [
+      {
+        "allele": "G",
+        "annotation": "missense_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "EGFR",
+        "gene_id": "EGFR",
+        "feature_type": "transcript",
+        "feature_id": "NM_005228.5",
+        "transcript_biotype": "protein_coding",
+        "rank": "21/28",
+        "hgvs_c": "c.2573T>G",
+        "hgvs_p": "p.Leu858Arg",
+        "cdna_pos": "2738/5591",
+        "cds_pos": "2573/3633",
+        "protein_pos": "858/1210",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Lung adenocarcinoma",
+      "review_stars": 3
+    },
+    "interpretation": {
+      "variant_id": "chr7:55259515:T>G",
+      "gene": "EGFR",
+      "hgvs_p": "p.Leu858Arg",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 1 (FDA-approved)",
+      "cancer_types": [
+        "Non-small cell lung cancer (adenocarcinoma)",
+        "NSCLC"
+      ],
+      "mechanism": "Activating EGFR kinase domain mutation increasing autophosphorylation and downstream PI3K/AKT and MAPK signaling",
+      "targeted_therapies": [
+        "Osimertinib (1st-line, 3rd-generation)",
+        "Erlotinib",
+        "Gefitinib",
+        "Afatinib",
+        "Amivantamab (after osimertinib resistance)"
+      ],
+      "clinical_trials_keywords": [
+        "EGFR L858R",
+        "EGFR TKI",
+        "osimertinib",
+        "EGFR-mutant NSCLC"
+      ],
+      "germline_implications": false,
+      "interpretation_summary": "EGFR p.Leu858Arg (L858R) is one of the two most common sensitizing EGFR mutations in NSCLC, conferring strong sensitivity to EGFR tyrosine kinase inhibitors. Osimertinib is the preferred first-line agent given superior CNS penetration and efficacy data (FLAURA trial). Monitor for acquired T790M resistance.",
+      "confidence": "High",
+      "caveats": "EGFR mutation testing should be repeated at progression to detect acquired T790M or other resistance mechanisms. If T790M positive at progression on 1st/2nd-gen TKI, osimertinib is indicated."
+    }
+  },
+  {
+    "id": "rs28934578",
+    "chrom": "chr17",
+    "pos": 7675088,
+    "ref": "C",
+    "alt": "T",
+    "qual": "290",
+    "filter": "PASS",
+    "gene": "TP53",
+    "gene_id": "TP53",
+    "consequence": "missense_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.524G>A",
+    "hgvs_p": "p.Arg175His",
+    "transcript": "NM_000546.6",
+    "allele_freq": 0.35,
+    "depth": 180,
+    "all_annotations": [
+      {
+        "allele": "T",
+        "annotation": "missense_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "TP53",
+        "gene_id": "TP53",
+        "feature_type": "transcript",
+        "feature_id": "NM_000546.6",
+        "transcript_biotype": "protein_coding",
+        "rank": "5/11",
+        "hgvs_c": "c.524G>A",
+        "hgvs_p": "p.Arg175His",
+        "cdna_pos": "657/2591",
+        "cds_pos": "524/1182",
+        "protein_pos": "175/393",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Li-Fraumeni syndrome",
+      "review_stars": 3
+    },
+    "interpretation": {
+      "variant_id": "chr17:7675088:C>T",
+      "gene": "TP53",
+      "hgvs_p": "p.Arg175His",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 4 (Preclinical)",
+      "cancer_types": [
+        "Pan-cancer",
+        "Li-Fraumeni syndrome (germline)",
+        "Multiple solid tumors"
+      ],
+      "mechanism": "Loss-of-function hotspot mutation abolishing DNA-binding capacity and p53 tumor suppression; gain-of-function oncogenic effects also reported",
+      "targeted_therapies": [
+        "APR-246/eprenetapopt (TP53 R175H/Y220C reactivator, clinical trials)",
+        "Immunotherapy (some TP53-mutant tumors have high TMB)",
+        "PRIMA-1 analogs (investigational)"
+      ],
+      "clinical_trials_keywords": [
+        "TP53 mutation",
+        "APR-246",
+        "eprenetapopt",
+        "p53 reactivation"
+      ],
+      "germline_implications": true,
+      "interpretation_summary": "TP53 p.Arg175His (R175H) is the most common TP53 hotspot mutation, causing both loss of wild-type tumor suppressive function and gain-of-function oncogenic activity. No approved targeted therapy directly addresses this mutation, though eprenetapopt clinical trials are ongoing. Germline TP53 mutations cause Li-Fraumeni syndrome \u2014 germline testing should be considered.",
+      "confidence": "High",
+      "caveats": "CRITICAL: Given the allele frequency (0.35), consider whether this could represent a germline TP53 mutation (Li-Fraumeni syndrome). Germline testing with genetic counseling is strongly recommended. Germline TP53 requires cascade testing of family members and enhanced cancer surveillance."
+    }
+  },
+  {
+    "id": "rs104886003",
+    "chrom": "chr3",
+    "pos": 179218303,
+    "ref": "G",
+    "alt": "A",
+    "qual": "265",
+    "filter": "PASS",
+    "gene": "PIK3CA",
+    "gene_id": "PIK3CA",
+    "consequence": "missense_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.1633G>A",
+    "hgvs_p": "p.Glu545Lys",
+    "transcript": "NM_006218.4",
+    "allele_freq": 0.28,
+    "depth": 110,
+    "all_annotations": [
+      {
+        "allele": "A",
+        "annotation": "missense_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "PIK3CA",
+        "gene_id": "PIK3CA",
+        "feature_type": "transcript",
+        "feature_id": "NM_006218.4",
+        "transcript_biotype": "protein_coding",
+        "rank": "10/21",
+        "hgvs_c": "c.1633G>A",
+        "hgvs_p": "p.Glu545Lys",
+        "cdna_pos": "1972/9435",
+        "cds_pos": "1633/3207",
+        "protein_pos": "545/1068",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Multiple cancers",
+      "review_stars": 2
+    },
+    "interpretation": {
+      "variant_id": "chr3:179218303:G>A",
+      "gene": "PIK3CA",
+      "hgvs_p": "p.Glu545Lys",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 1 (FDA-approved)",
+      "cancer_types": [
+        "Breast cancer (HR+/HER2-)",
+        "Endometrial cancer",
+        "Colorectal cancer",
+        "Head and neck"
+      ],
+      "mechanism": "Activating helical domain mutation enhancing PI3K activity and downstream AKT/mTOR signaling",
+      "targeted_therapies": [
+        "Alpelisib + fulvestrant (HR+/HER2- BC, FDA-approved)",
+        "Capivasertib + fulvestrant (AKT inhibitor)",
+        "Everolimus (mTOR inhibitor, indirect)",
+        "Inavolisib (clinical trials)"
+      ],
+      "clinical_trials_keywords": [
+        "PIK3CA E545K",
+        "PI3K inhibitor",
+        "alpelisib",
+        "SOLAR-1"
+      ],
+      "germline_implications": false,
+      "interpretation_summary": "PIK3CA p.Glu545Lys (E545K) is one of the three most common PIK3CA hotspot mutations, activating the PI3K/AKT pathway. In HR+/HER2- breast cancer, alpelisib + fulvestrant is FDA-approved based on the SOLAR-1 trial. Hyperglycemia and rash are significant toxicities requiring monitoring.",
+      "confidence": "High",
+      "caveats": "Alpelisib is only approved in combination with fulvestrant for HR+/HER2- breast cancer post-CDK4/6 inhibitor. Tumor type should guide treatment. Check for PTEN loss co-occurrence which may reduce PI3Ki sensitivity."
+    }
+  },
+  {
+    "id": "rs267607140",
+    "chrom": "chr2",
+    "pos": 209113112,
+    "ref": "C",
+    "alt": "T",
+    "qual": "175",
+    "filter": "PASS",
+    "gene": "IDH1",
+    "gene_id": "IDH1",
+    "consequence": "missense_variant",
+    "impact": "MODERATE",
+    "hgvs_c": "c.394C>T",
+    "hgvs_p": "p.Arg132His",
+    "transcript": "NM_005896.4",
+    "allele_freq": 0.22,
+    "depth": 88,
+    "all_annotations": [
+      {
+        "allele": "T",
+        "annotation": "missense_variant",
+        "annotation_impact": "MODERATE",
+        "gene_name": "IDH1",
+        "gene_id": "IDH1",
+        "feature_type": "transcript",
+        "feature_id": "NM_005896.4",
+        "transcript_biotype": "protein_coding",
+        "rank": "4/10",
+        "hgvs_c": "c.394C>T",
+        "hgvs_p": "p.Arg132His",
+        "cdna_pos": "543/2979",
+        "cds_pos": "394/1236",
+        "protein_pos": "132/411",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Pathogenic",
+      "condition": "Glioma/AML",
+      "review_stars": 2
+    },
+    "interpretation": {
+      "variant_id": "chr2:209113112:C>T",
+      "gene": "IDH1",
+      "hgvs_p": "p.Arg132His",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 1 (FDA-approved)",
+      "cancer_types": [
+        "Glioma (grade 2-3)",
+        "Glioblastoma (rare)",
+        "AML",
+        "Cholangiocarcinoma"
+      ],
+      "mechanism": "Neomorphic enzyme activity producing 2-hydroxyglutarate (2-HG), which inhibits alpha-KG-dependent dioxygenases causing epigenetic dysregulation and impaired differentiation",
+      "targeted_therapies": [
+        "Ivosidenib (IDH1 inhibitor, FDA-approved AML/CCA)",
+        "Vorasidenib (IDH1+IDH2, FDA-approved low-grade glioma \u2014 INDIGO trial 2024)",
+        "Olutasidenib (IDH1 inhibitor, AML)"
+      ],
+      "clinical_trials_keywords": [
+        "IDH1 R132H",
+        "ivosidenib",
+        "vorasidenib",
+        "2-HG"
+      ],
+      "germline_implications": false,
+      "interpretation_summary": "IDH1 p.Arg132His (R132H) produces the oncometabolite 2-hydroxyglutarate, driving hypermethylation and epigenetic reprogramming. FDA-approved IDH1 inhibitors include ivosidenib (AML, cholangiocarcinoma) and vorasidenib (low-grade glioma \u2014 approved 2024 based on INDIGO trial). Tumor type must guide drug selection.",
+      "confidence": "High",
+      "caveats": "Vorasidenib was specifically approved for IDH1/2-mutant Grade 2 glioma \u2014 verify tumor grade and histology. In AML, ivosidenib may be used alone or combined with azacitidine. Serum/CSF 2-HG levels can serve as a pharmacodynamic biomarker."
+    }
+  },
+  {
+    "id": "rs80357382",
+    "chrom": "chr13",
+    "pos": 32338682,
+    "ref": "AG",
+    "alt": "A",
+    "qual": "220",
+    "filter": "PASS",
+    "gene": "BRCA2",
+    "gene_id": "BRCA2",
+    "consequence": "frameshift_variant",
+    "impact": "HIGH",
+    "hgvs_c": "c.6174delT",
+    "hgvs_p": "p.Ser2059fs",
+    "transcript": "NM_000059.4",
+    "allele_freq": 0.48,
+    "depth": 134,
+    "all_annotations": [
+      {
+        "allele": "A",
+        "annotation": "frameshift_variant",
+        "annotation_impact": "HIGH",
+        "gene_name": "BRCA2",
+        "gene_id": "BRCA2",
+        "feature_type": "transcript",
+        "feature_id": "NM_000059.4",
+        "transcript_biotype": "protein_coding",
+        "rank": "11/27",
+        "hgvs_c": "c.6174delT",
+        "hgvs_p": "p.Ser2059fs",
+        "cdna_pos": "6283/10257",
+        "cds_pos": "6174/10257",
+        "protein_pos": "2059/3418",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {},
+    "interpretation": {
+      "variant_id": "chr13:32338682:AG>A",
+      "gene": "BRCA2",
+      "hgvs_p": "p.Ser2059fs",
+      "clinical_significance": "Pathogenic",
+      "oncological_relevance": "High",
+      "evidence_tier": "Tier 1 (FDA-approved)",
+      "cancer_types": [
+        "Ovarian cancer (HBOC)",
+        "Breast cancer (HBOC)",
+        "Pancreatic cancer",
+        "Prostate cancer",
+        "Other HRD-sensitive tumors"
+      ],
+      "mechanism": "Frameshift causing BRCA2 loss-of-function, impairing homologous recombination repair and creating synthetic lethality with PARP inhibition",
+      "targeted_therapies": [
+        "Olaparib (PARP inhibitor, FDA-approved multiple indications)",
+        "Niraparib",
+        "Rucaparib",
+        "Talazoparib (breast)",
+        "Platinum-based chemotherapy (high sensitivity)"
+      ],
+      "clinical_trials_keywords": [
+        "BRCA2 mutation",
+        "PARP inhibitor",
+        "HRD",
+        "homologous recombination"
+      ],
+      "germline_implications": true,
+      "interpretation_summary": "BRCA2 frameshift p.Ser2059fs causes premature truncation and loss of BRCA2-mediated homologous recombination repair. PARP inhibitors (olaparib, niraparib, rucaparib, talazoparib) are FDA-approved for BRCA1/2-mutant ovarian, breast, pancreatic, and prostate cancers. HRD testing may further refine platinum/PARP inhibitor sensitivity.",
+      "confidence": "High",
+      "caveats": "CRITICAL: High allele frequency (0.48) strongly suggests germline BRCA2 mutation. Genetic counseling and germline confirmation are mandatory. Germline BRCA2 mutations carry lifetime breast (~45-69%), ovarian (~11-17%), and pancreatic cancer risk and have cascade testing implications for first-degree relatives."
+    }
+  },
+  {
+    "id": "rs121909218",
+    "chrom": "chr10",
+    "pos": 89692905,
+    "ref": "T",
+    "alt": "A",
+    "qual": "195",
+    "filter": "PASS",
+    "gene": "PTEN",
+    "gene_id": "PTEN",
+    "consequence": "missense_variant",
+    "impact": "MODERATE",
+    "hgvs_c": "c.389T>A",
+    "hgvs_p": "p.Arg130Gln",
+    "transcript": "NM_000314.8",
+    "allele_freq": 0.18,
+    "depth": 76,
+    "all_annotations": [
+      {
+        "allele": "A",
+        "annotation": "missense_variant",
+        "annotation_impact": "MODERATE",
+        "gene_name": "PTEN",
+        "gene_id": "PTEN",
+        "feature_type": "transcript",
+        "feature_id": "NM_000314.8",
+        "transcript_biotype": "protein_coding",
+        "rank": "5/9",
+        "hgvs_c": "c.389T>A",
+        "hgvs_p": "p.Arg130Gln",
+        "cdna_pos": "534/5539",
+        "cds_pos": "389/1212",
+        "protein_pos": "130/403",
+        "distance": "",
+        "errors": ""
+      }
+    ],
+    "raw_info": {},
+    "clinvar": {
+      "significance": "Likely pathogenic",
+      "condition": "PTEN hamartoma",
+      "review_stars": 2
+    },
+    "interpretation": {
+      "variant_id": "chr10:89692905:T>A",
+      "gene": "PTEN",
+      "hgvs_p": "p.Arg130Gln",
+      "clinical_significance": "Likely Pathogenic",
+      "oncological_relevance": "Moderate",
+      "evidence_tier": "Tier 3 (Clinical trial)",
+      "cancer_types": [
+        "Endometrial cancer",
+        "Breast cancer",
+        "Glioblastoma",
+        "PTEN hamartoma syndrome"
+      ],
+      "mechanism": "Partial loss-of-function of PTEN phosphatase reducing PIP3 dephosphorylation and increasing PI3K/AKT signaling",
+      "targeted_therapies": [
+        "Alpelisib (if PIK3CA co-mutation present)",
+        "Everolimus/temsirolimus (mTOR inhibitors)",
+        "Capivasertib (AKT inhibitor, clinical trials)",
+        "PI3K-pathway inhibitor combinations"
+      ],
+      "clinical_trials_keywords": [
+        "PTEN loss",
+        "PTEN mutation",
+        "AKT inhibitor",
+        "PI3K pathway"
+      ],
+      "germline_implications": true,
+      "interpretation_summary": "PTEN p.Arg130Gln is a partial loss-of-function variant in the phosphatase domain, likely impairing PTEN's tumor suppressive function and upregulating PI3K/AKT signaling. While not directly targeted by approved agents, downstream mTOR inhibitors may be considered. Co-occurring PIK3CA mutations should be assessed.",
+      "confidence": "Moderate",
+      "caveats": "Germline PTEN mutations cause PTEN Hamartoma Tumor Syndrome (PHTS/Cowden syndrome) \u2014 consider germline testing. Allele frequency (0.18) may represent somatic or germline variant. PTEN loss can predict reduced sensitivity to PI3K inhibitors in some contexts."
+    }
+  }
+]

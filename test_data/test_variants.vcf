@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##source=llm-variant-interpreter test data
+##INFO=<ID=ANN,Number=.,Type=String,Description="SnpEff Annotation">
+##FILTER=<ID=PASS,Description="All filters passed">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	TUMOR
+chr12	25245350	rs121913529	C	T	250	PASS	ANN=T|missense_variant|HIGH|KRAS|KRAS|transcript|NM_004985.5|protein_coding|2/6|c.35G>A|p.Gly12Asp|203/5825|35/570|12/189||	GT:DP:AF	0/1:120:0.42
+chr7	140453136	rs113488022	A	T	280	PASS	ANN=T|missense_variant|HIGH|BRAF|BRAF|transcript|NM_004333.6|protein_coding|15/18|c.1799T>A|p.Val600Glu|1801/2948|1799/2301|600/766||	GT:DP:AF	0/1:95:0.38
+chr7	55259515	rs121434568	T	G	310	PASS	ANN=G|missense_variant|HIGH|EGFR|EGFR|transcript|NM_005228.5|protein_coding|21/28|c.2573T>G|p.Leu858Arg|2738/5591|2573/3633|858/1210||	GT:DP:AF	0/1:145:0.45
+chr17	7675088	rs28934578	C	T	290	PASS	ANN=T|missense_variant|HIGH|TP53|TP53|transcript|NM_000546.6|protein_coding|5/11|c.524G>A|p.Arg175His|657/2591|524/1182|175/393||	GT:DP:AF	0/1:180:0.35
+chr3	179218303	rs104886003	G	A	265	PASS	ANN=A|missense_variant|HIGH|PIK3CA|PIK3CA|transcript|NM_006218.4|protein_coding|10/21|c.1633G>A|p.Glu545Lys|1972/9435|1633/3207|545/1068||	GT:DP:AF	0/1:110:0.28
+chr2	209113112	rs267607140	C	T	175	PASS	ANN=T|missense_variant|MODERATE|IDH1|IDH1|transcript|NM_005896.4|protein_coding|4/10|c.394C>T|p.Arg132His|543/2979|394/1236|132/411||	GT:DP:AF	0/1:88:0.22
+chr13	32338682	rs80357382	AG	A	220	PASS	ANN=A|frameshift_variant|HIGH|BRCA2|BRCA2|transcript|NM_000059.4|protein_coding|11/27|c.6174delT|p.Ser2059fs|6283/10257|6174/10257|2059/3418||	GT:DP:AF	0/1:134:0.48
+chr10	89692905	rs121909218	T	A	195	PASS	ANN=A|missense_variant|MODERATE|PTEN|PTEN|transcript|NM_000314.8|protein_coding|5/9|c.389T>A|p.Arg130Gln|534/5539|389/1212|130/403||	GT:DP:AF	0/1:76:0.18
