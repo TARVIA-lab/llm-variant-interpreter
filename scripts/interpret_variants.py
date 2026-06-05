@@ -228,7 +228,7 @@ def interpret_batch(client, variants: list[dict], dry_run: bool = False) -> list
     response = client.messages.create(
         model="claude-opus-4-8",
         max_tokens=4096,
-        thinking={"type": "enabled", "budget_tokens": 2000},
+        thinking={"type": "adaptive"},
         system=[{
             "type": "text",
             "text": ONCOLOGY_SYSTEM,
